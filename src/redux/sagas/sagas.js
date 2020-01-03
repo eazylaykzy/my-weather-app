@@ -55,8 +55,6 @@ const getWeather = async (query) => {
 	const resp = await fetch(`${url}?${URLparams}`, {
 		method: "GET", // *GET, POST, PUT, DELETE, etc.
 		mode: mode, // no-cors, *cors, same-origin
-		cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-		credentials: "same-origin", // include, *same-origin, omit
 		headers: {
 			Authorization: auth_header,
 			"X-Yahoo-App-Id": app_id

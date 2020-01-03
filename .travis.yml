@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - 12.12.0
 
+before_install:
+  - npm install -g yarn
+
 deploy:
   provider: heroku
   email: codesurgeio@gmail.com
