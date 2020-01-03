@@ -1,7 +1,6 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import CryptoJS from "crypto-js";
 import * as TYPES from '../actions-types/actions-types';
-require('dotenv').config();
 
 export default function* WeatherWatcherSaga() {
 	yield takeEvery(TYPES.ONLOAD_REQUEST, WeatherWorkerSaga);
@@ -28,8 +27,9 @@ function* TogglerWorkerSaga(action) {
 
 const getWeather = async (query) => {
 	let url = "https://weather-ydn-yql.media.yahoo.com/forecastrss";
-	const method = "GET", app_id = process.env.REACT_APP_WEATHER_APP_ID, consumer_key = process.env.REACT_APP_WEATHER_CONSUMER_KEY,
-		consumer_secret = process.env.REACT_APP_WEATHER_CONSUMER_SECRET, concat = "&",
+	const method = "GET", app_id = 'xiMlBZ74', consumer_key =
+			'dj0yJmk9b2xQaGkxRkFsNzE2JmQ9WVdrOWVHbE5iRUphTnpRbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTRl',
+		consumer_secret = '2f860c6f8de27de963c07e5c4e6df92dd30bb0f1', concat = "&",
 		oauth = {
 			oauth_consumer_key: consumer_key,
 			oauth_nonce: Math.random()
