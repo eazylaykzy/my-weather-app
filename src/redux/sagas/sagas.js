@@ -1,6 +1,7 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import CryptoJS from "crypto-js";
 import * as TYPES from '../actions-types/actions-types';
+require('dotenv').config();
 
 export default function* WeatherWatcherSaga() {
 	yield takeEvery(TYPES.ONLOAD_REQUEST, WeatherWorkerSaga);
@@ -47,9 +48,13 @@ const getWeather = async (query) => {
 	oauth["oauth_signature"] = hash.toString(CryptoJS.enc.Base64);
 	const auth_header = "OAuth " + Object.keys(oauth).map(k => [k + '="' + oauth[k] + '"']).join(",");
 
+	// setting CORS dynamically
+	let mode;
+	process.env.NODE_ENV === 'development' ? mode = 'cors' : mode = 'no-cors';
+
 	const resp = await fetch(`${url}?${URLparams}`, {
 		method: "GET", // *GET, POST, PUT, DELETE, etc.
-		mode: "no-cors", // no-cors, *cors, same-origin
+		mode: mode, // no-cors, *cors, same-origin
 		cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
 		credentials: "same-origin", // include, *same-origin, omit
 		headers: {
