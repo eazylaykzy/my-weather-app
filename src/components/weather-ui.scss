@@ -1,0 +1,296 @@
+$conditions: (
+        snow: lavender,
+        sun: tomato,
+        rain: royalblue,
+        cloudy: lightslategray,
+        wind: mediumseagreen,
+        night: darkslateblue,
+        clear: steelblue
+);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+%display-flex {
+  display: flex;
+}
+
+.localweather {
+  @extend %display-flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: currentColor;
+  transition: color 0.3s ease;
+  color: white;
+
+  @each $condition, $color in $conditions {
+    &--#{$condition} {
+      color: #{$color};
+    }
+  }
+
+  &__top {
+    background: #222;
+  }
+
+  &__icon {
+    font-size: 5em;
+    padding: 0.3em 0;
+    display: inherit;
+    .wi-sun {
+      animation: 20s infinite linear rotate;
+    }
+  }
+
+  &__temp {
+    padding: 0 0.2em;
+    font-size: 3em;
+    font-weight: 400;
+    line-height: 0.8em;
+    min-width: 2.7em; // equals 2 digits
+    color: #fff;
+  }
+
+  &__heading {
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  &__conditions {
+    @extend %display-flex;
+    width: 100%;
+    justify-content: space-around;
+    align-content: center;
+    text-align: left;
+    color: #fff;
+  }
+
+  &__city {
+    font-size: 1em;
+    margin: 0;
+    font-weight: 300;
+    background: transparent;
+    background-size: contain;
+    border-width: 0 0 2px 0;
+    border-style: dotted;
+    border-color: royalblue;
+    appearance: none;
+    outline: none;
+    color: white;
+    transition: border-color .3s ease;
+
+    &::placeholder {
+      color: #fff;
+    }
+    &:hover {
+      border-color: mediumspringgreen;
+    }
+    &:focus {
+      border-color: mediumseagreen;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 300;
+  }
+
+  &__form {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+.condition {
+  @extend %display-flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 0.8em;
+
+  &__icon {
+    font-size: 3em;
+    line-height: 1em;
+    &--small {
+      font-size: 2em;
+    }
+  }
+  &__value {
+    @extend %display-flex;
+    flex-flow: column nowrap;
+  }
+  &__label {
+    opacity: 0.4;
+  }
+  &--wind {
+    flex-basis: 9em;
+  }
+  &__wind-direction {
+    display: inline-flex;
+    will-change: transform;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+    width: 1em;
+    height: 1em;
+    margin: 0.3em;
+  }
+  &__sunrise {
+    text-transform: uppercase;
+  }
+
+}
+
+.forecast {
+  @extend %display-flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  width: 100%;
+  background: #efefef;
+  color: #222;
+
+  &__row {
+    @extend %display-flex;
+    flex: 1 100%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 0.4em 1em;
+    line-height: 2.2em;
+  }
+  &__col {
+    height: 2.2em;
+    &--2 {
+      @extend %display-flex;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  &__icon {
+    font-size: 2.2em;
+    min-width: 2em;
+    padding: 0 .4em;
+  }
+  &__temp {
+    min-width: 2.6em;
+    &--high {
+      font-weight: 700;
+    }
+  }
+  &__day {
+    min-width: 2.3em;
+  }
+}
+
+.layout {
+  &__container {
+    @extend %display-flex;
+    flex-flow: row wrap;
+    width: 500px;
+    margin: auto;
+    align-self: center;
+  }
+  &__row {
+    @extend %display-flex;
+    flex: 1 1 100%;
+    width: 100%;
+
+    &--alt {
+      flex-flow: row nowrap;
+      align-items: center;
+      padding: 0 1em;
+    }
+  }
+}
+
+.toggle {
+  display: inline-block;
+  font-size: 1.4em;
+
+  input {
+    display: none;
+  }
+
+  &__switch {
+    display: inline-block;
+    font-size: 1em;
+    width: 2.2em;
+    height: 1.2em;
+    padding: 0.1em;
+    margin: 0 0.2em;
+    border-radius: 0.6em;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  &__label {
+    display: block;
+    font-size: 1em;
+    padding: 0.3em;
+    cursor: pointer;
+  }
+
+  &__handle {
+    display: block;
+    width: 1em;
+    height: 1em;
+    background: white;
+    border-radius: 50%;
+    will-change: margin-left;
+    transition: all .3s ease;
+  }
+  &:hover .toggle__handle {
+    background: springgreen;
+  }
+
+  &__input:checked + label {
+    .toggle__handle {
+      margin-left: 1em;
+    }
+    .toggle__text:first-child {
+      color: #222;
+    }
+    .toggle__text {
+      color: #fff;
+    }
+  }
+
+  &__text {
+    vertical-align: text-top;
+    transition: color .3s ease;
+    color: #222;
+    &:first-child {
+      color: #fff;
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pac-container {
+  font-family: inherit;
+  &:after {
+    display: none;
+  }
+}
+
+::selection {
+  background: #47cf73;
+}
+
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
