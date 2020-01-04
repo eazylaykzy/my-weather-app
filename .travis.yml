@@ -4,10 +4,14 @@ node_js:
   - 12.12.0
 
 before_install:
-  - npm install -g yarn
+  - yarn add netlify-cli
+
+script:
+  - yarn test
+  - yarn run build
 
 deploy:
-  provider: heroku
+  provider: netlify
   email: codesurgeio@gmail.com
   api_key:
     secure: j3rDyzZzxwfdnln9LpAwhi1kEXjI4EYJjEd50elc2Y9vXfxxWVlCRNXA/ly+T/1R9BWluMU5nsRyFyqU3VbS1NRltpmSz7b7X1fq+1kd3YguS3y5RU6/FZIrUWfqadCyrrt0vyENKCtcM6LSzj+y5+0esgLncQqDjaDX21ZIBnsYxcLyCmQN8b2ri97wdLw1mqAbwepMYcWFUMI4/933c0ayNhioqagVPAwcyD1nh7aHSAKSYjFZ+YXdNzNSYxazbax3d0QTZJAiqdgOlHXytnbK08uEQMoZBY/UzxAjw4O+1sD3f7npKx9/byH2P9JgLgpZ7SgDKA719NjhoFxo0yP0qpU3UL3P+iZccz9kkPpIynwHhUbCgFVNJUCL/N1VWihKaiUSubZ/w3/eGhC+3+HNx/OnH56ZhAdZi/tjIFo5vzStHJ336wwRW3M8oSG7AdvmfoqBKgAChEzqCuxe2g9CaE7hX3HtyoeQYQA1bwTmkf9F1IMGtWn8E5O3Qx8lSdW1LrNvyMvalpan7Pq2Q4K9VsltgKNCwajd6uD1ZC7WZyecLyJDYElaIqfwRu2atYKRs/8dMuJS74gu0Er6map+o5kO9PBPRE7JCCuAYKRAXr86351B02lR3l0XmJVsD1mn7jZ94ASGnYwtLo0s8pAUkf9i80gPZh1ERdX/1U8=
