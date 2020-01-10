@@ -45,7 +45,9 @@ const getWeather = async (query) => {
 		composite_key = encodeURIComponent(consumer_secret) + concat,
 		hash = CryptoJS.HmacSHA1(signature_base_str, composite_key);
 	oauth["oauth_signature"] = hash.toString(CryptoJS.enc.Base64);
+	console.log(oauth);
 	const auth_header = "OAuth " + Object.keys(oauth).map(k => [k + '="' + oauth[k] + '"']).join(",");
+	console.log(auth_header);
 
 	// setting CORS dynamically
 	let mode;
