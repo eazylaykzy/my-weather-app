@@ -17,7 +17,7 @@ const initialState = {
 		time: null,
 		night: null,
 		unit: 'f',
-		query: {location: 'Lagos', format: 'json', u: "c"}
+		query: {location: 'Lagos', format: 'json'}
 	}
 };
 

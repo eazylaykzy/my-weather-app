@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from "redux-saga/effects";
-import CryptoJS from "crypto-js";
 import * as TYPES from '../actions-types/actions-types';
+const CryptoJS = require("crypto-js");
 
 export default function* WeatherWatcherSaga() {
 	yield takeEvery(TYPES.WEATHER_REQUEST, WeatherWorkerSaga);
