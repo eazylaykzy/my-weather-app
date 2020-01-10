@@ -53,7 +53,7 @@ const Header = props => {
 				<CurrentWeather {...{condition, unit, time, location, night}} />
 				<Conditions {...{wind, atmosphere, astronomy, units, night}} />
 				<ForecastTable data={forecasts} unit={unit}/>
-				<UnitsToggle handleToggle={toggleHandler}/>
+				<UnitsToggle handleToggle={toggleHandler} unitChecked={unit !== 'f' ? 1 : 0}/>
 			</div>
 		</div>
 	);

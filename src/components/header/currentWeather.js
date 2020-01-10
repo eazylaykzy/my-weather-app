@@ -15,7 +15,7 @@ const CurrentWeather = props => {
 	if (night && code === "32") code = "31";
 	const inputHandler = e => {
 		e.preventDefault();
-		queryData({query: {'location': e.target.value, format: 'json'}});
+		queryData({query: {'location': e.target.value, format: 'json', u: "c"}});
 	};
 	return (
 		<div className="layout__row layout__row--alt localweather__top">

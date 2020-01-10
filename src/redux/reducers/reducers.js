@@ -17,13 +17,13 @@ const initialState = {
 		time: null,
 		night: null,
 		unit: 'f',
-		query: {location: 'Lagos', format: 'json'}
+		query: {location: 'Lagos', format: 'json', u: "c"}
 	}
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case TYPES.ONLOAD_SUCCESS:
+		case TYPES.WEATHER_REQUEST_SUCCESS:
 			return {
 				weatherResults: {...state.weatherResults, ...action.payload}
 			};
