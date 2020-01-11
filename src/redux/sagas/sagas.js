@@ -26,7 +26,7 @@ function* TogglerWorkerSaga(action) {
 }
 
 const getWeather = async (query) => {
-	let url = "http://weather-ydn-yql.media.yahoo.com/forecastrss";
+	let url = "https://weather-ydn-yql.media.yahoo.com/forecastrss";
 	const method = "GET", app_id = process.env.REACT_APP_WEATHER_APP_ID, consumer_key = process.env.REACT_APP_WEATHER_CONSUMER_KEY,
 		consumer_secret = process.env.REACT_APP_WEATHER_CONSUMER_SECRET, concat = "&",
 		oauth = {
@@ -54,8 +54,6 @@ const getWeather = async (query) => {
 	const resp = await fetch(`${url}?${URLparams}`, {
 		method: "GET", // *GET, POST, PUT, DELETE, etc.
 		mode: mode, // no-cors, *cors, same-origin
-		cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-		credentials: "same-origin", // include, *same-origin, omit
 		headers: {
 			Authorization: auth_header,
 			"X-Yahoo-App-Id": app_id
