@@ -26,14 +26,12 @@ function* TogglerWorkerSaga(action) {
 }
 
 const getWeather = async (query) => {
-	let url = "https://weather-ydn-yql.media.yahoo.com/forecastrss";
+	let url = "www.weather-ydn-yql.media.yahoo.com/forecastrss";
 	const method = "GET", app_id = process.env.REACT_APP_WEATHER_APP_ID, consumer_key = process.env.REACT_APP_WEATHER_CONSUMER_KEY,
 		consumer_secret = process.env.REACT_APP_WEATHER_CONSUMER_SECRET, concat = "&",
 		oauth = {
 			oauth_consumer_key: consumer_key,
-			oauth_nonce: Math.random()
-				.toString(36)
-				.substring(2),
+			oauth_nonce: Math.random().toString(36).substring(2),
 			oauth_signature_method: "HMAC-SHA1",
 			oauth_timestamp: parseInt(new Date().getTime() / 1000, 10).toString(),
 			oauth_version: "1.0"
