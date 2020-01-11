@@ -52,8 +52,6 @@ const getWeather = async (query) => {
 	process.env.NODE_ENV === 'development' ? mode = 'cors' : mode = 'no-cors';
 
 	const resp = await fetch(`${url}?${URLparams}`, {
-		method: "GET", // *GET, POST, PUT, DELETE, etc.
-		mode: mode, // no-cors, *cors, same-origin
 		headers: {
 			Authorization: auth_header,
 			"X-Yahoo-App-Id": app_id
