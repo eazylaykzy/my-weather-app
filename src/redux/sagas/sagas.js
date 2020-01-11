@@ -26,7 +26,7 @@ function* TogglerWorkerSaga(action) {
 }
 
 const getWeather = async (query) => {
-	let url = "www.weather-ydn-yql.media.yahoo.com/forecastrss";
+	let url = "http://weather-ydn-yql.media.yahoo.com/forecastrss";
 	const method = "GET", app_id = process.env.REACT_APP_WEATHER_APP_ID, consumer_key = process.env.REACT_APP_WEATHER_CONSUMER_KEY,
 		consumer_secret = process.env.REACT_APP_WEATHER_CONSUMER_SECRET, concat = "&",
 		oauth = {
